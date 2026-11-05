@@ -1,0 +1,253 @@
+{
+ "lang": "BERTRES127_TV",
+ "episodes": 20000,
+ "series": 2943,
+ "chunks": 251304,
+ "content_tokens": 69243730,
+ "linear_top": [
+  {
+   "topic": 121,
+   "label": "ладный спасибо good need let look time",
+   "r": -0.987
+  },
+  {
+   "topic": 76,
+   "label": "жизнь должный сделать человек понимать друг видеть",
+   "r": 0.979
+  },
+  {
+   "topic": 25,
+   "label": "глаз голос думать слово рука ответить любить",
+   "r": 0.977
+  },
+  {
+   "topic": 106,
+   "label": "день время магазин хороший сделать год дом",
+   "r": -0.975
+  },
+  {
+   "topic": 70,
+   "label": "делать хороший сделать должный ладный мама любить",
+   "r": 0.972
+  },
+  {
+   "topic": 73,
+   "label": "ладный сделать нужно должный хороший любить делать",
+   "r": 0.968
+  },
+  {
+   "topic": 100,
+   "label": "did good love time sorry make maybe",
+   "r": 0.962
+  },
+  {
+   "topic": 86,
+   "label": "убить сделать должный нужно человек делать видеть",
+   "r": 0.962
+  },
+  {
+   "topic": 35,
+   "label": "did look good sorry time way let",
+   "r": 0.96
+  },
+  {
+   "topic": 21,
+   "label": "did good sorry time look love почему",
+   "r": 0.96
+  },
+  {
+   "topic": 123,
+   "label": "need let good доктор look спасибо did",
+   "r": -0.959
+  },
+  {
+   "topic": 107,
+   "label": "любить глаз жизнь хороший человек стать друг",
+   "r": 0.959
+  }
+ ],
+ "arc_top": [
+  {
+   "topic": 26,
+   "label": "need did let time help man good",
+   "r": -0.911
+  },
+  {
+   "topic": 3,
+   "label": "let good look need thank god man",
+   "r": -0.898
+  },
+  {
+   "topic": 83,
+   "label": "глаз рука взгляд лицо девушка голос голова",
+   "r": 0.891
+  },
+  {
+   "topic": 51,
+   "label": "год жизнь мама человек хороший ребенок отец",
+   "r": 0.853
+  },
+  {
+   "topic": 110,
+   "label": "танцевать танец платье девушка рука музыка глаз",
+   "r": 0.84
+  },
+  {
+   "topic": 112,
+   "label": "глаз идти видеть рука человек вода голова",
+   "r": 0.828
+  },
+  {
+   "topic": 13,
+   "label": "did сделать people должный почему человек good",
+   "r": 0.825
+  },
+  {
+   "topic": 92,
+   "label": "год человек время жизнь день стать новый",
+   "r": -0.818
+  },
+  {
+   "topic": 68,
+   "label": "песня музыка петь гитара играть мелодия голос",
+   "r": 0.813
+  },
+  {
+   "topic": 42,
+   "label": "дело человек суд did сделать адвокат убить",
+   "r": 0.81
+  },
+  {
+   "topic": 7,
+   "label": "чай кофе пить стол бутылка рука вино",
+   "r": 0.801
+  },
+  {
+   "topic": 27,
+   "label": "did need people time good look way",
+   "r": 0.799
+  }
+ ],
+ "n_topics_abs_r_lin_gt_0.9": 37,
+ "n_topics_abs_r_arc_gt_0.9": 1,
+ "law_and_order_episodes": 17,
+ "fig4_place_topics": [
+  "дом комната день дверь окно время сон",
+  "школа класс урок учитель год первый ученик",
+  "год человек работать жизнь работа время делать"
+ ],
+ "fig4_truth_topics": [
+  "делать хороший сделать должный ладный мама любить",
+  "ладный давать привет спасибо нужно идти бог",
+  "любить глаз жизнь хороший человек стать друг"
+ ],
+ "fig4_corr_x_time": 0.972,
+ "fig4_corr_y_time": -0.908,
+ "fig5": {
+  "CSI Miami": {
+   "n": 16,
+   "r_truth_time": 0.585,
+   "r_place_time": -0.051
+  },
+  "Grey's Anatomy": {
+   "n": 108,
+   "r_truth_time": 0.851,
+   "r_place_time": -0.733
+  },
+  "NCIS": {
+   "n": 127,
+   "r_truth_time": -0.305,
+   "r_place_time": -0.244
+  },
+  "Stargate SG-1": {
+   "n": 50,
+   "r_truth_time": 0.954,
+   "r_place_time": -0.93
+  },
+  "The Traitors US": {
+   "n": 16,
+   "r_truth_time": 0.234,
+   "r_place_time": -0.26
+  },
+  "Prison Break": {
+   "n": 22,
+   "r_truth_time": 0.509,
+   "r_place_time": 0.008
+  }
+ },
+ "pca_var_explained_first2_allK": 0.9417,
+ "pc1_corr_time": 0.984,
+ "pc2_corr_arc": 0.81,
+ "fig7_raw": {
+  "var_explained_first2": 0.9434,
+  "rw_var_explained_first2": 0.7763,
+  "remaining_ratio_real": [
+   0.634,
+   0.845,
+   0.415,
+   0.427,
+   0.271,
+   0.262
+  ],
+  "remaining_ratio_rw_mean": [
+   0.616,
+   0.416,
+   0.323,
+   0.281,
+   0.263,
+   0.266
+  ],
+  "z_scores": [
+   0.5,
+   11.8,
+   2.9,
+   5.3,
+   0.3,
+   -0.2
+  ],
+  "pc_beats_all_1000_rw": [
+   false,
+   true,
+   false,
+   true,
+   false,
+   false
+  ]
+ },
+ "fig7_standardized": {
+  "var_explained_first2": 0.8028,
+  "rw_var_explained_first2": 0.6431,
+  "remaining_ratio_real": [
+   0.584,
+   0.526,
+   0.324,
+   0.22,
+   0.248,
+   0.282
+  ],
+  "remaining_ratio_rw_mean": [
+   0.453,
+   0.347,
+   0.294,
+   0.269,
+   0.26,
+   0.266
+  ],
+  "z_scores": [
+   4.4,
+   6.0,
+   1.0,
+   -1.9,
+   -0.5,
+   0.7
+  ],
+  "pc_beats_all_1000_rw": [
+   true,
+   true,
+   false,
+   false,
+   false,
+   false
+  ]
+ }
+}

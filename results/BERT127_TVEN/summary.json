@@ -1,0 +1,253 @@
+{
+ "lang": "BERT127_TVEN",
+ "episodes": 20000,
+ "series": 3352,
+ "chunks": 248034,
+ "content_tokens": 83464039,
+ "linear_top": [
+  {
+   "topic": 29,
+   "label": "feel love good did time people life",
+   "r": 0.991
+  },
+  {
+   "topic": 18,
+   "label": "did sorry need time look good let",
+   "r": 0.979
+  },
+  {
+   "topic": 38,
+   "label": "good love look thank let feel god",
+   "r": -0.95
+  },
+  {
+   "topic": 37,
+   "label": "president need people let did time sir",
+   "r": -0.945
+  },
+  {
+   "topic": 44,
+   "label": "need patient doctor surgery let good did",
+   "r": -0.939
+  },
+  {
+   "topic": 25,
+   "label": "man let fuck good shit fucking need",
+   "r": 0.913
+  },
+  {
+   "topic": 5,
+   "label": "good look let man did sorry time",
+   "r": -0.817
+  },
+  {
+   "topic": 58,
+   "label": "people world time water way years earth",
+   "r": -0.78
+  },
+  {
+   "topic": 6,
+   "label": "good did look sorry time love let",
+   "r": -0.776
+  },
+  {
+   "topic": 45,
+   "label": "people did time need good life make",
+   "r": 0.753
+  },
+  {
+   "topic": 67,
+   "label": "gold car plant good bit season time",
+   "r": -0.735
+  },
+  {
+   "topic": 14,
+   "label": "did father lord need time let way",
+   "r": 0.609
+  }
+ ],
+ "arc_top": [
+  {
+   "topic": 69,
+   "label": "game team coach play good let man",
+   "r": -0.893
+  },
+  {
+   "topic": 9,
+   "label": "did case police murder need time killed",
+   "r": 0.827
+  },
+  {
+   "topic": 15,
+   "label": "good let thank look god love time",
+   "r": -0.788
+  },
+  {
+   "topic": 86,
+   "label": "amen      ",
+   "r": -0.763
+  },
+  {
+   "topic": 35,
+   "label": "let need good man look fuck time",
+   "r": -0.722
+  },
+  {
+   "topic": 14,
+   "label": "did father lord need time let way",
+   "r": -0.689
+  },
+  {
+   "topic": 50,
+   "label": "ship time need let way did help",
+   "r": -0.579
+  },
+  {
+   "topic": 84,
+   "label": "traitor traitors faithful game vote people table",
+   "r": -0.567
+  },
+  {
+   "topic": 6,
+   "label": "good did look sorry time love let",
+   "r": -0.528
+  },
+  {
+   "topic": 58,
+   "label": "people world time water way years earth",
+   "r": -0.513
+  },
+  {
+   "topic": 26,
+   "label": "ладный спасибо давать привет бог хороший идти",
+   "r": -0.494
+  },
+  {
+   "topic": 45,
+   "label": "people did time need good life make",
+   "r": 0.467
+  }
+ ],
+ "n_topics_abs_r_lin_gt_0.9": 6,
+ "n_topics_abs_r_arc_gt_0.9": 0,
+ "law_and_order_episodes": 18,
+ "fig4_place_topics": [
+  "муж мама квартира дом женщина год стать",
+  "класс кабинка ответить школа упасть автобус начать",
+  "президент должный человек нужно сэр дело сделать"
+ ],
+ "fig4_truth_topics": [
+  "ладный спасибо тип любить хороший нравиться привет",
+  "ладный привет спасибо давать мама хороший бог",
+  "думать друг человек жизнь любить понимать почему"
+ ],
+ "fig4_corr_x_time": NaN,
+ "fig4_corr_y_time": NaN,
+ "fig5": {
+  "CSI Miami": {
+   "n": 48,
+   "r_truth_time": NaN,
+   "r_place_time": NaN
+  },
+  "Grey's Anatomy": {
+   "n": 102,
+   "r_truth_time": NaN,
+   "r_place_time": NaN
+  },
+  "NCIS": {
+   "n": 106,
+   "r_truth_time": NaN,
+   "r_place_time": NaN
+  },
+  "Stargate SG-1": {
+   "n": 50,
+   "r_truth_time": NaN,
+   "r_place_time": NaN
+  },
+  "The Traitors US": {
+   "n": 11,
+   "r_truth_time": NaN,
+   "r_place_time": NaN
+  },
+  "Prison Break": {
+   "n": 15,
+   "r_truth_time": NaN,
+   "r_place_time": NaN
+  }
+ },
+ "pca_var_explained_first2_allK": 0.9305,
+ "pc1_corr_time": 0.975,
+ "pc2_corr_arc": 0.861,
+ "fig7_raw": {
+  "var_explained_first2": 0.9305,
+  "rw_var_explained_first2": 0.7905,
+  "remaining_ratio_real": [
+   0.735,
+   0.738,
+   0.53,
+   0.517,
+   0.441,
+   0.275
+  ],
+  "remaining_ratio_rw_mean": [
+   0.623,
+   0.441,
+   0.364,
+   0.332,
+   0.324,
+   0.338
+  ],
+  "z_scores": [
+   1.5,
+   4.3,
+   3.1,
+   3.9,
+   3.0,
+   -1.6
+  ],
+  "pc_beats_all_1000_rw": [
+   false,
+   true,
+   false,
+   false,
+   false,
+   false
+  ]
+ },
+ "fig7_standardized": {
+  "var_explained_first2": 0.7547,
+  "rw_var_explained_first2": 0.6759,
+  "remaining_ratio_real": [
+   0.453,
+   0.551,
+   0.376,
+   0.376,
+   0.394,
+   0.387
+  ],
+  "remaining_ratio_rw_mean": [
+   0.472,
+   0.386,
+   0.347,
+   0.338,
+   0.341,
+   0.357
+  ],
+  "z_scores": [
+   -0.3,
+   2.9,
+   0.6,
+   0.8,
+   1.3,
+   0.6
+  ],
+  "pc_beats_all_1000_rw": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ]
+ }
+}

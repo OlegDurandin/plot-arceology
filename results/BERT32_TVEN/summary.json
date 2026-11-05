@@ -1,0 +1,253 @@
+{
+ "lang": "BERT32_TVEN",
+ "episodes": 20000,
+ "series": 3352,
+ "chunks": 248034,
+ "content_tokens": 83464039,
+ "linear_top": [
+  {
+   "topic": 11,
+   "label": "good need time let did people look",
+   "r": -0.959
+  },
+  {
+   "topic": 15,
+   "label": "need did time let way good help",
+   "r": 0.756
+  },
+  {
+   "topic": 8,
+   "label": "год время человек стать город первый день",
+   "r": -0.48
+  },
+  {
+   "topic": 2,
+   "label": "ладный привет спасибо давать хороший делать нужно",
+   "r": 0.48
+  },
+  {
+   "topic": 27,
+   "label": "amen      ",
+   "r": 0.399
+  },
+  {
+   "topic": 17,
+   "label": "человек жизнь мир время год стать каждый",
+   "r": -0.308
+  },
+  {
+   "topic": 0,
+   "label": "good let look did time need love",
+   "r": 0.221
+  },
+  {
+   "topic": 10,
+   "label": "рука стать дом глаз человек то вода",
+   "r": 0.049
+  },
+  {
+   "topic": 4,
+   "label": "did need time let good look man",
+   "r": 0.003
+  },
+  {
+   "topic": 7,
+   "label": "стать год дом рука мама женщина день",
+   "r": NaN
+  },
+  {
+   "topic": 29,
+   "label": "ситереть пра гэта кал каб сус свая",
+   "r": NaN
+  },
+  {
+   "topic": 28,
+   "label": "офисный ветер суккуб демоница дракон гитара копье",
+   "r": NaN
+  }
+ ],
+ "arc_top": [
+  {
+   "topic": 4,
+   "label": "did need time let good look man",
+   "r": 0.841
+  },
+  {
+   "topic": 10,
+   "label": "рука стать дом глаз человек то вода",
+   "r": -0.775
+  },
+  {
+   "topic": 27,
+   "label": "amen      ",
+   "r": -0.751
+  },
+  {
+   "topic": 0,
+   "label": "good let look did time need love",
+   "r": -0.72
+  },
+  {
+   "topic": 15,
+   "label": "need did time let way good help",
+   "r": -0.559
+  },
+  {
+   "topic": 8,
+   "label": "год время человек стать город первый день",
+   "r": -0.524
+  },
+  {
+   "topic": 2,
+   "label": "ладный привет спасибо давать хороший делать нужно",
+   "r": -0.524
+  },
+  {
+   "topic": 11,
+   "label": "good need time let did people look",
+   "r": 0.17
+  },
+  {
+   "topic": 17,
+   "label": "человек жизнь мир время год стать каждый",
+   "r": -0.103
+  },
+  {
+   "topic": 5,
+   "label": "дело должный сделать нужно человек убить найти",
+   "r": NaN
+  },
+  {
+   "topic": 29,
+   "label": "ситереть пра гэта кал каб сус свая",
+   "r": NaN
+  },
+  {
+   "topic": 28,
+   "label": "офисный ветер суккуб демоница дракон гитара копье",
+   "r": NaN
+  }
+ ],
+ "n_topics_abs_r_lin_gt_0.9": 1,
+ "n_topics_abs_r_arc_gt_0.9": 0,
+ "law_and_order_episodes": 18,
+ "fig4_place_topics": [
+  "стать год дом рука мама женщина день",
+  "good let look did time need love",
+  "ладный должный сделать хороший нужно делать спасибо"
+ ],
+ "fig4_truth_topics": [
+  "ладный привет спасибо давать хороший делать нужно",
+  "увидеть человек маленький затем большой дом день",
+  "лесной эльф завеса бог дух божество глаз"
+ ],
+ "fig4_corr_x_time": 0.48,
+ "fig4_corr_y_time": 0.221,
+ "fig5": {
+  "CSI Miami": {
+   "n": 48,
+   "r_truth_time": NaN,
+   "r_place_time": 0.077
+  },
+  "Grey's Anatomy": {
+   "n": 102,
+   "r_truth_time": NaN,
+   "r_place_time": 0.779
+  },
+  "NCIS": {
+   "n": 106,
+   "r_truth_time": NaN,
+   "r_place_time": -0.429
+  },
+  "Stargate SG-1": {
+   "n": 50,
+   "r_truth_time": NaN,
+   "r_place_time": 0.382
+  },
+  "The Traitors US": {
+   "n": 11,
+   "r_truth_time": NaN,
+   "r_place_time": -0.688
+  },
+  "Prison Break": {
+   "n": 15,
+   "r_truth_time": NaN,
+   "r_place_time": 0.272
+  }
+ },
+ "pca_var_explained_first2_allK": 0.9459,
+ "pc1_corr_time": 0.435,
+ "pc2_corr_arc": 0.278,
+ "fig7_raw": {
+  "var_explained_first2": 0.9459,
+  "rw_var_explained_first2": 0.8232,
+  "remaining_ratio_real": [
+   0.663,
+   0.839,
+   1.0,
+   0.869,
+   0.989,
+   0.585
+  ],
+  "remaining_ratio_rw_mean": [
+   0.646,
+   0.497,
+   0.448,
+   0.448,
+   0.477,
+   0.536
+  ],
+  "z_scores": [
+   0.2,
+   3.9,
+   7.6,
+   6.2,
+   7.4,
+   0.6
+  ],
+  "pc_beats_all_1000_rw": [
+   false,
+   true,
+   true,
+   true,
+   true,
+   false
+  ]
+ },
+ "fig7_standardized": {
+  "var_explained_first2": 0.8327,
+  "rw_var_explained_first2": 0.7345,
+  "remaining_ratio_real": [
+   0.581,
+   0.6,
+   0.535,
+   0.855,
+   0.743,
+   0.829
+  ],
+  "remaining_ratio_rw_mean": [
+   0.512,
+   0.459,
+   0.454,
+   0.474,
+   0.502,
+   0.566
+  ],
+  "z_scores": [
+   0.8,
+   1.8,
+   1.2,
+   5.4,
+   3.0,
+   2.9
+  ],
+  "pc_beats_all_1000_rw": [
+   false,
+   false,
+   false,
+   true,
+   false,
+   false
+  ]
+ }
+}

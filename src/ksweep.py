@@ -5,7 +5,9 @@ alpha optimisation) but on chunks from training episodes only; evaluation uses a
 held-out episodes (the same for every K), so all numbers are comparable across K.
 
 Per K:
-  topic quality  : NPMI and C_v coherence (top-10 words), topic diversity, held-out log-likelihood/word
+  topic quality  : NPMI and C_v coherence (top-10 words, on a fixed 30k-chunk reference sample of the
+                   training corpus), topic diversity, held-out log-likelihood/word (see REPORT: not
+                   comparable across K, tomotopy's infer ll includes the document-topic prior)
   plot arc       : share of topics with |r_lin| > 0.9 / 0.7, arcing topics, 6-topic path r,
                    PCA variance of 2 PCs, |r(PC1, time)|, |r(PC2, middle)|, z(PC2) vs random walks,
                    agreement of the 12-part PC1/PC2 trajectory with the main K=127 model
@@ -86,6 +88,19 @@ def arc_metrics(dt, topics, lang, ref_scores, sims_cache, rng):
     return m
 
 
+N_COH = 30_000   # fixed reference corpus for coherence (full-corpus c_v is single-threaded and O(K))
+
+
+def coherence(top10, ref):
+    """mean NPMI and C_v of the topics' top-10 words, estimated on the reference corpus."""
+    targets = sorted({w for t in top10 for w in t})
+    out = {}
+    for c in ("c_npmi", "c_v"):
+        coh = tp.coherence.Coherence(ref, coherence=c, top_n=10, targets=targets)
+        out[c] = float(np.mean([coh.get_score(words=t) for t in top10]))
+    return out
+
+
 def main(lang, ks, seeds="42", n_eval=20000):
     lang = lang.upper()
     ks = [int(k) for k in ks.split(",")]
@@ -114,6 +129,9 @@ def main(lang, ks, seeds="42", n_eval=20000):
                 train[j] = d["t"]
     print(f"{lang}: train {len(train)} chunks, eval {len(eval_docs)} chunks of {len(eval_ep)} episodes",
           flush=True)
+    ref = tp.utils.Corpus()
+    for j in random.Random(7).sample(range(len(train)), min(N_COH, len(train))):
+        ref.add_doc(train[j])
 
     # reference trajectory: the main K=127 model on the same evaluation episodes
     main_dt = dict(np.load(os.path.join(work, "doc_topics.npz")))
@@ -124,6 +142,10 @@ def main(lang, ks, seeds="42", n_eval=20000):
 
     out_csv = os.path.join(res_dir, f"ksweep_{lang}.csv")
     rows = pd.read_csv(out_csv).to_dict("records") if os.path.exists(out_csv) else []
+    for r in rows:      # (re)compute coherence of finished runs on the same reference corpus
+        tdf = pd.read_csv(os.path.join(out_root, f"{lang}_K{r['K']}_s{r['seed']}", "topics.csv"))
+        coh = coherence([t.split() for t in tdf.top10], ref)
+        r["npmi"], r["c_v"] = coh["c_npmi"], coh["c_v"]
     done = {(r["K"], r["seed"]) for r in rows}
     sims_cache, nrng = {}, np.random.default_rng(0)
     for K in ks:
@@ -140,8 +162,7 @@ def main(lang, ks, seeds="42", n_eval=20000):
             topics = pd.DataFrame([dict(topic=k, label=" ".join(w for w, _ in mdl.get_topic_words(k, top_n=7)),
                                         top10=" ".join(w for w, _ in mdl.get_topic_words(k, top_n=10)))
                                    for k in range(K)])
-            coh = {c: float(tp.coherence.Coherence(mdl, coherence=c, top_n=10).get_score())
-                   for c in ("c_npmi", "c_v")}
+            coh = coherence([[w for w, _ in mdl.get_topic_words(k, top_n=10)] for k in range(K)], ref)
             top_words = [w for k in range(K) for w, _ in mdl.get_topic_words(k, top_n=10)]
             diversity = len(set(top_words)) / len(top_words)
             # held-out inference

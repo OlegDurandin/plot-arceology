@@ -1,0 +1,253 @@
+{
+ "lang": "BERTAUTO_TVEN",
+ "episodes": 20000,
+ "series": 3352,
+ "chunks": 248034,
+ "content_tokens": 83464039,
+ "linear_top": [
+  {
+   "topic": 0,
+   "label": "человек время хороший сделать год делать нужно",
+   "r": 0.693
+  },
+  {
+   "topic": 14,
+   "label": "time power man let look good need",
+   "r": 0.323
+  },
+  {
+   "topic": 5,
+   "label": "убить золото рассказчик унция установка сезон порода",
+   "r": -0.214
+  },
+  {
+   "topic": 10,
+   "label": "gold plant season good pay ounces running",
+   "r": -0.166
+  },
+  {
+   "topic": 1,
+   "label": "did good let need time look sorry",
+   "r": -0.031
+  },
+  {
+   "topic": 8,
+   "label": "car race bit good cars look time",
+   "r": 0.024
+  },
+  {
+   "topic": 2,
+   "label": "король увидеть принц принцесса затем человек ответить",
+   "r": NaN
+  },
+  {
+   "topic": 3,
+   "label": "юнга чимин чонгук рука глаз взгляд палец",
+   "r": NaN
+  },
+  {
+   "topic": 4,
+   "label": "тор лока асгарда сигурд великан бог меч",
+   "r": NaN
+  },
+  {
+   "topic": 6,
+   "label": "минхий джисон чан ликс хан хван губа",
+   "r": NaN
+  },
+  {
+   "topic": 7,
+   "label": "мегуметь фушигуро эльф итадорь рок рука маг",
+   "r": NaN
+  },
+  {
+   "topic": 9,
+   "label": "мицук юто кайтый рука глаз кит лицо",
+   "r": NaN
+  }
+ ],
+ "arc_top": [
+  {
+   "topic": 1,
+   "label": "did good let need time look sorry",
+   "r": 0.903
+  },
+  {
+   "topic": 8,
+   "label": "car race bit good cars look time",
+   "r": -0.714
+  },
+  {
+   "topic": 5,
+   "label": "убить золото рассказчик унция установка сезон порода",
+   "r": -0.532
+  },
+  {
+   "topic": 0,
+   "label": "человек время хороший сделать год делать нужно",
+   "r": -0.407
+  },
+  {
+   "topic": 10,
+   "label": "gold plant season good pay ounces running",
+   "r": -0.378
+  },
+  {
+   "topic": 14,
+   "label": "time power man let look good need",
+   "r": -0.271
+  },
+  {
+   "topic": 2,
+   "label": "король увидеть принц принцесса затем человек ответить",
+   "r": NaN
+  },
+  {
+   "topic": 3,
+   "label": "юнга чимин чонгук рука глаз взгляд палец",
+   "r": NaN
+  },
+  {
+   "topic": 4,
+   "label": "тор лока асгарда сигурд великан бог меч",
+   "r": NaN
+  },
+  {
+   "topic": 6,
+   "label": "минхий джисон чан ликс хан хван губа",
+   "r": NaN
+  },
+  {
+   "topic": 7,
+   "label": "мегуметь фушигуро эльф итадорь рок рука маг",
+   "r": NaN
+  },
+  {
+   "topic": 9,
+   "label": "мицук юто кайтый рука глаз кит лицо",
+   "r": NaN
+  }
+ ],
+ "n_topics_abs_r_lin_gt_0.9": 0,
+ "n_topics_abs_r_arc_gt_0.9": 1,
+ "law_and_order_episodes": 18,
+ "fig4_place_topics": [
+  "человек время хороший сделать год делать нужно",
+  "did good let need time look sorry",
+  "король увидеть принц принцесса затем человек ответить"
+ ],
+ "fig4_truth_topics": [
+  "юнга чимин чонгук рука глаз взгляд палец",
+  "тор лока асгарда сигурд великан бог меч",
+  "убить золото рассказчик унция установка сезон порода"
+ ],
+ "fig4_corr_x_time": -0.214,
+ "fig4_corr_y_time": -0.03,
+ "fig5": {
+  "CSI Miami": {
+   "n": 48,
+   "r_truth_time": NaN,
+   "r_place_time": 0.26
+  },
+  "Grey's Anatomy": {
+   "n": 102,
+   "r_truth_time": NaN,
+   "r_place_time": 0.656
+  },
+  "NCIS": {
+   "n": 106,
+   "r_truth_time": NaN,
+   "r_place_time": 0.246
+  },
+  "Stargate SG-1": {
+   "n": 50,
+   "r_truth_time": NaN,
+   "r_place_time": -0.342
+  },
+  "The Traitors US": {
+   "n": 11,
+   "r_truth_time": NaN,
+   "r_place_time": 0.393
+  },
+  "Prison Break": {
+   "n": 15,
+   "r_truth_time": NaN,
+   "r_place_time": 0.426
+  }
+ },
+ "pca_var_explained_first2_allK": 0.962,
+ "pc1_corr_time": 0.023,
+ "pc2_corr_arc": 0.067,
+ "fig7_raw": {
+  "var_explained_first2": 0.962,
+  "rw_var_explained_first2": 0.8524,
+  "remaining_ratio_real": [
+   0.695,
+   0.875,
+   1.0,
+   0.648,
+   0.998,
+   1.0
+  ],
+  "remaining_ratio_rw_mean": [
+   0.673,
+   0.545,
+   0.54,
+   0.589,
+   0.714,
+   1.0
+  ],
+  "z_scores": [
+   0.2,
+   3.5,
+   5.5,
+   0.7,
+   2.8,
+   NaN
+  ],
+  "pc_beats_all_1000_rw": [
+   false,
+   true,
+   true,
+   false,
+   true,
+   false
+  ]
+ },
+ "fig7_standardized": {
+  "var_explained_first2": 0.6865,
+  "rw_var_explained_first2": 0.7768,
+  "remaining_ratio_real": [
+   0.415,
+   0.464,
+   0.458,
+   0.543,
+   1.0,
+   1.0
+  ],
+  "remaining_ratio_rw_mean": [
+   0.539,
+   0.521,
+   0.558,
+   0.618,
+   0.732,
+   1.0
+  ],
+  "z_scores": [
+   -1.2,
+   -0.6,
+   -1.2,
+   -0.8,
+   2.6,
+   NaN
+  ],
+  "pc_beats_all_1000_rw": [
+   false,
+   false,
+   false,
+   false,
+   true,
+   false
+  ]
+ }
+}

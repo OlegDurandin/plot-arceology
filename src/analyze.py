@@ -254,7 +254,10 @@ def main(lang):
     summary["pc2_corr_arc"] = round(float(abs(np.corrcoef((x - 6.5) ** 2, scores[:, 1])[0, 1])), 3)
 
     # ---------------- Fig 7: variance explained vs. random walks ---------------------
-    top100 = np.argsort(-share12.mean(0))[:100]
+    # 100 most frequent topics with non-zero variance over the 12 parts (BERTopic topics can be
+    # absent from a source, e.g. English-only topics in Russian texts)
+    top100 = [k for k in np.argsort(-share12.mean(0)) if share12[:, k].std() > 0][:100]
+    kdim = len(top100)
     rng = np.random.default_rng(0)
     res = {}
     for mode in ["raw", "standardized"]:
@@ -267,7 +270,7 @@ def main(lang):
         rr = remaining_ratio(ev_r)
         sims, f2 = [], []
         for _ in range(1000):
-            W = np.cumsum(rng.standard_normal((12, 100)), axis=0)
+            W = np.cumsum(rng.standard_normal((12, kdim)), axis=0)
             _, _, ev_w = pca(prep(W))
             sims.append(remaining_ratio(ev_w))
             f2.append(ev_w[:2].sum() / ev_w.sum())
@@ -282,13 +285,14 @@ def main(lang):
             remaining_ratio_real=[round(float(v), 3) for v in rr[:6]],
             remaining_ratio_rw_mean=[round(float(v), 3) for v in sims.mean(0)[:6]],
             z_scores=[round(float(v), 1) for v in z[:6]],
-            pc_beats_all_1000_rw=[bool(rr[k] > sims[:, k].max()) for k in range(6)])
+            pc_beats_all_1000_rw=[bool(rr[k] > sims[:, k].max()) for k in range(min(6, len(rr)))])
     fig, axes = plt.subplots(1, 2, figsize=(13, 5.5))
     for ax, mode in zip(axes, res):
         r = res[mode]
-        ax.boxplot([r["sims"][:, k] for k in range(11)], positions=range(1, 12), widths=.6,
+        nc = min(11, len(r["real"]), r["sims"].shape[1])      # rank can be < 11 for few topics
+        ax.boxplot([r["sims"][:, k] for k in range(nc)], positions=range(1, nc + 1), widths=.6,
                    flierprops=dict(markersize=2))
-        ax.scatter(range(1, 12), r["real"], marker="^", color="red", s=60, zorder=3)
+        ax.scatter(range(1, nc + 1), r["real"][:nc], marker="^", color="red", s=60, zorder=3)
         ax.set_xlabel("component"); ax.set_ylabel("share of remaining variance explained")
         ax.set_title(f"{mode} topics: first 2 PCs explain {r['first2']:.0%} of variance\n"
                      f"z(PC1)={r['z'][0]:.1f}, z(PC2)={r['z'][1]:.1f} vs 1000 random walks")

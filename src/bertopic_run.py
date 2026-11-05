@@ -33,6 +33,24 @@ SRCS = {"TV_RU": ("RU", "TV"), "TV_EN": ("EN", "TVEN"), "TALES": ("TALES", "TALE
 FIT_N = {"TV_RU": 40000, "TV_EN": 40000, "TALES": 20000, "PROZA": 30000, "FICBOOK": 30000}
 X12 = np.arange(1, 13, dtype=float)
 N_EQ, PERMS = 2000, 100
+# RESID=1: cluster within-text residuals (chunk embedding minus the mean embedding of its text), so that
+# topics describe what happens at this point of the text rather than which text / show / fandom it is
+RESID = os.environ.get("RESID", "0") == "1"
+
+
+def residualize(e):
+    X = e["emb"].astype(np.float32)
+    eid = e["eid"]
+    uniq, inv = np.unique(eid, return_inverse=True)
+    w = e["words"].astype(np.float32)[:, None]
+    mean = np.zeros((len(uniq), X.shape[1]), np.float32)
+    np.add.at(mean, inv, X * w)
+    mean /= np.bincount(inv, weights=w[:, 0])[:, None]
+    R = X - mean[inv]
+    R /= np.linalg.norm(R, axis=1, keepdims=True) + 1e-12
+    out = dict(e)
+    out["emb"] = R
+    return out
 
 
 def load_emb(src):
@@ -112,14 +130,18 @@ def main():
 
     embs = {s: load_emb(s) for s in SRCS if os.path.exists(os.path.join(EMB, f"{s}.npz"))}
     print("sources:", {s: len(e["eid"]) for s, e in embs.items()}, flush=True)
+    if RESID:
+        embs = {s: residualize(e) for s, e in embs.items()}
+        print("using within-text residual embeddings", flush=True)
 
     # ---- 1. embedding arcs ---------------------------------------------------------------
     rows, arcs = [], {}
-    for s, e in embs.items():
+    for s, e in ({} if RESID else embs).items():
         mt, sc = emb_arc_metrics(e, rng, sims)
         rows.append(dict(source=s, **mt)); arcs[s] = sc
         print("emb-arc", s, {k: round(v, 3) for k, v in mt.items()}, flush=True)
-    pd.DataFrame(rows).to_csv(os.path.join(out, "embedding_arcs.csv"), index=False)
+    if not RESID:
+        pd.DataFrame(rows).to_csv(os.path.join(out, "embedding_arcs.csv"), index=False)
     fig, ax = plt.subplots(figsize=(7, 6))
     for s, sc in arcs.items():
         sg1 = np.sign(np.corrcoef(X12, sc[:, 0])[0, 1]) or 1
@@ -130,7 +152,9 @@ def main():
             ax.text(p2[j], p1[j], str(j + 1), fontsize=8)
     ax.set_xlabel("PC2 (normalised)"); ax.set_ylabel("PC1 (normalised)"); ax.grid(alpha=.3); ax.legend()
     ax.set_title("Mean-embedding arc (multilingual-e5), 12 parts, per source")
-    fig.tight_layout(); fig.savefig(os.path.join(out, "embedding_arcs.png"), dpi=130); plt.close(fig)
+    if not RESID:
+        fig.tight_layout(); fig.savefig(os.path.join(out, "embedding_arcs.png"), dpi=130)
+    plt.close(fig)
 
     # ---- 2. BERTopic ------------------------------------------------------------------------
     from bertopic import BERTopic
@@ -170,7 +194,7 @@ def main():
         return m_
 
     summary = []
-    for variant in ["auto", 127, 64, 32]:
+    for variant in ([127, 64, 32] if RESID else ["auto", 127, 64, 32]):
         m_ = fit_variant(variant)
         if variant == "auto":
             tt = np.array(m_.topics_)
@@ -185,7 +209,7 @@ def main():
         for t in tids:
             words = [w for w, _ in (m_.get_topic(t) or [])][:10]
             labels.append(dict(topic=len(labels), label=" ".join(words[:7]), top10=" ".join(words)))
-        tag = f"BERT{variant}"
+        tag = f"BERTres{variant}" if RESID else f"BERT{variant}"
         for s, e in embs.items():
             X = e["emb"].astype(np.float32)
             assign = np.concatenate([np.argmax(X[a:a + 50000] @ cent.T, axis=1)
@@ -202,7 +226,8 @@ def main():
             ep[ep.eid.isin(set(e["eid"]))].to_csv(os.path.join(d, "episodes.csv"), index=False)
         summary.append(dict(variant=str(variant), topics=K))
         print(f"{tag}: {K} topics written", flush=True)
-    pd.DataFrame(summary).to_csv(os.path.join(out, "variants.csv"), index=False)
+    pd.DataFrame(summary).to_csv(os.path.join(out, "variants_resid.csv" if RESID else "variants.csv"),
+                                 index=False)
     print(f"done ({time.time() - t0:.0f}s)", flush=True)
 
 
