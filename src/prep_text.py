@@ -168,29 +168,39 @@ def sentences(text, sep):
     return out
 
 
+def split_chunks(text, sep):
+    """Recursive word-based chunking -> (n, [list of (sentence, is_dialogue, n_words)] per chunk)
+    or None if the text is too short / has too few sentences."""
+    sents = sentences(text, sep)
+    nw = sum(s[2] for s in sents)
+    if nw < 3 * MIN_W:
+        return None
+    n = chunk_count(nw)
+    cum = np.cumsum([s[2] for s in sents])
+    # chunk boundaries at k/n of the words, snapped to the nearest sentence end
+    cuts = [0]
+    for k in range(1, n):
+        j = int(np.argmin(np.abs(cum - nw * k / n))) + 1
+        cuts.append(max(j, cuts[-1] + 1))
+    cuts.append(len(sents))
+    if any(b <= a for a, b in zip(cuts[:-1], cuts[1:])):
+        return None                                         # too few sentences
+    return n, [sents[a:b] for a, b in zip(cuts[:-1], cuts[1:])]
+
+
 def process(args):
     shard, rows, out_path = args
     cap = collections.defaultdict(lambda: [0, 0])
     meta = []
     with gzip.open(out_path, "wt", encoding="utf-8") as fo:
         for r in rows:
-            sents = sentences(r["text"], r["para_sep"])
-            nw = sum(s[2] for s in sents)
-            if nw < 3 * MIN_W:
+            sp = split_chunks(r["text"], r["para_sep"])
+            if sp is None:
                 continue
-            n = chunk_count(nw)
-            cum = np.cumsum([s[2] for s in sents])
-            # chunk boundaries at k/n of the words, snapped to the nearest sentence end
-            cuts = [0]
-            for k in range(1, n):
-                j = int(np.argmin(np.abs(cum - nw * k / n))) + 1
-                cuts.append(max(j, cuts[-1] + 1))
-            cuts.append(len(sents))
-            if any(b <= a for a, b in zip(cuts[:-1], cuts[1:])):
-                continue                                    # too few sentences
+            n, parts = sp
+            nw = sum(s[2] for part in parts for s in part)
             dl_total = 0
-            for i, (a, b) in enumerate(zip(cuts[:-1], cuts[1:])):
-                part = sents[a:b]
+            for i, part in enumerate(parts):
                 toks = tokenize_lines([s[0] for s in part], "RU", cap)
                 w = sum(s[2] for s in part)
                 d = sum(s[2] for s in part if s[1]) / max(w, 1)
