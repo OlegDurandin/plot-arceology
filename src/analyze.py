@@ -35,7 +35,7 @@ PLACE_SEEDS = {
 TRUTH_SEEDS = {
     "EN": [["truth", "lie", "believe", "true", "lying"],
            ["sorry", "fault", "wrong", "mistake", "forgive"],
-           ["love", "heart", "care", "feel", "happy", "promise", "forgive"]],
+           ["leave", "stay", "away", "promise", "please", "care"]],   # the paper's third topic
     "RU": [["правда", "врать", "ложь", "верить", "лгать"],
            ["прости", "простить", "вина", "виноватый", "извинить", "ошибка"],
            ["любовь", "сердце", "любить", "чувствовать", "счастливый", "обещать", "простить"]],

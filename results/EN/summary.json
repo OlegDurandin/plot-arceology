@@ -1,193 +1,193 @@
 {
  "lang": "EN",
- "episodes": 91801,
- "series": 3856,
- "chunks": 1135314,
- "content_tokens": 112514679,
+ "episodes": 92930,
+ "series": 3904,
+ "chunks": 1152324,
+ "content_tokens": 114118944,
  "linear_top": [
   {
-   "topic": 117,
-   "label": "agent security need team government agents information",
-   "r": -0.992
-  },
-  {
-   "topic": 104,
-   "label": "school class high college kids year teacher",
-   "r": -0.989
-  },
-  {
-   "topic": 84,
-   "label": "mom kids dad school parents kid house",
-   "r": -0.988
-  },
-  {
-   "topic": 96,
-   "label": "years stone history people world ancient place",
-   "r": -0.987
-  },
-  {
-   "topic": 85,
-   "label": "did truth lie believe trust people lying",
-   "r": 0.983
+   "topic": 87,
+   "label": "police officer cop detective guy case cops",
+   "r": -0.99
   },
   {
    "topic": 9,
-   "label": "sorry did wanted thought feel look fault",
-   "r": 0.982
+   "label": "school class high college year kids teacher",
+   "r": -0.99
   },
   {
-   "topic": 7,
-   "label": "did knew time went thought wanted remember",
+   "topic": 111,
+   "label": "house place live home sell property people",
+   "r": -0.988
+  },
+  {
+   "topic": 32,
+   "label": "sorry did look thank god fine talk",
+   "r": 0.987
+  },
+  {
+   "topic": 86,
+   "label": "dr doctor hospital patient need nurse medical",
+   "r": -0.981
+  },
+  {
+   "topic": 107,
+   "label": "did wanted thought life feel knew make",
    "r": 0.981
   },
   {
-   "topic": 87,
-   "label": "fucking fuck shit god man fucked fuckin",
+   "topic": 112,
+   "label": "did truth lie believe lying telling knew",
    "r": 0.98
   },
   {
-   "topic": 105,
-   "label": "house place room home apartment live stuff",
-   "r": -0.974
+   "topic": 70,
+   "label": "need let away stay stop leave look",
+   "r": 0.978
   },
   {
-   "topic": 66,
-   "label": "story news read book write new people",
-   "r": -0.973
+   "topic": 109,
+   "label": "fucking fuck shit man fuckin fucked god",
+   "r": 0.977
   },
   {
-   "topic": 67,
-   "label": "people black white community country america world",
-   "r": -0.969
+   "topic": 65,
+   "label": "wait let minute hold sorry look need",
+   "r": 0.974
   },
   {
-   "topic": 122,
-   "label": "job work new need business office good",
-   "r": -0.955
+   "topic": 101,
+   "label": "people video news media story social online",
+   "r": -0.966
+  },
+  {
+   "topic": 40,
+   "label": "kids mom dad kid parents house family",
+   "r": -0.964
   }
  ],
  "arc_top": [
   {
-   "topic": 61,
-   "label": "did ask question questions talk answer asking",
-   "r": 0.967
+   "topic": 92,
+   "label": "remember look years did picture time old",
+   "r": 0.987
   },
   {
-   "topic": 110,
-   "label": "win team good guys blah time challenge",
-   "r": -0.932
+   "topic": 3,
+   "label": "make build need way work time use",
+   "r": 0.965
   },
   {
-   "topic": 113,
-   "label": "money pay cash bank paid card need",
-   "r": 0.922
+   "topic": 84,
+   "label": "did ask question questions answer need talk",
+   "r": 0.956
   },
   {
-   "topic": 91,
-   "label": "women woman men sex man wife husband",
-   "r": 0.919
+   "topic": 1,
+   "label": "team win race good year bit game",
+   "r": -0.955
   },
   {
-   "topic": 24,
-   "label": "power need time machine light way work",
-   "r": 0.912
+   "topic": 46,
+   "label": "hand head look hands let good face",
+   "r": 0.944
   },
   {
-   "topic": 17,
-   "label": "wedding married love ring marriage marry wife",
-   "r": -0.896
+   "topic": 48,
+   "label": "people did talk saying talking time way",
+   "r": 0.926
   },
   {
-   "topic": 108,
-   "label": "bird birds animal snake monkey eat animals",
-   "r": 0.894
+   "topic": 20,
+   "label": "wedding married love marry ring marriage day",
+   "r": -0.926
   },
   {
-   "topic": 21,
-   "label": "gold plant season good cut pay running",
-   "r": -0.887
+   "topic": 13,
+   "label": "gold plant good season pay running cut",
+   "r": -0.912
   },
   {
-   "topic": 94,
-   "label": "christmas ho santa year merry tree holiday",
-   "r": -0.884
+   "topic": 104,
+   "label": "money pay bank cash million paid need",
+   "r": 0.906
   },
   {
-   "topic": 60,
-   "label": "computer video code online data access need",
-   "r": 0.88
+   "topic": 33,
+   "label": "gold treasure steal stole stolen thief diamond",
+   "r": 0.898
   },
   {
-   "topic": 44,
-   "label": "water gas oil air burn use used",
-   "r": 0.879
+   "topic": 19,
+   "label": "people feel life therapy brain self mind",
+   "r": 0.896
   },
   {
-   "topic": 73,
-   "label": "family time old years life people friends",
-   "r": -0.877
+   "topic": 54,
+   "label": "phone number message need hello called did",
+   "r": 0.895
   }
  ],
- "n_topics_abs_r_lin_gt_0.9": 27,
- "n_topics_abs_r_arc_gt_0.9": 5,
+ "n_topics_abs_r_lin_gt_0.9": 28,
+ "n_topics_abs_r_arc_gt_0.9": 9,
  "law_and_order_episodes": 96,
  "fig4_place_topics": [
-  "house place room home apartment live stuff",
-  "school class high college kids year teacher",
-  "job work new need business office good"
+  "room house place hotel floor look bed",
+  "school class high college year kids teacher",
+  "job work good office day working need"
  ],
  "fig4_truth_topics": [
-  "did truth lie believe trust people lying",
-  "sorry did wanted thought feel look fault",
-  "love heart life happy feel man loved"
+  "did truth lie believe lying telling knew",
+  "sorry did look thank god fine talk",
+  "need let away stay stop leave look"
  ],
- "fig4_corr_x_time": 0.977,
- "fig4_corr_y_time": -0.98,
+ "fig4_corr_x_time": 0.991,
+ "fig4_corr_y_time": -0.971,
  "fig5": {
   "CSI Miami": {
    "n": 227,
-   "r_truth_time": 0.817,
-   "r_place_time": -0.375
+   "r_truth_time": 0.854,
+   "r_place_time": -0.509
   },
   "Grey's Anatomy": {
    "n": 466,
-   "r_truth_time": 0.976,
-   "r_place_time": 0.019
+   "r_truth_time": 0.988,
+   "r_place_time": -0.243
   },
   "NCIS": {
    "n": 511,
-   "r_truth_time": 0.996,
-   "r_place_time": -0.929
+   "r_truth_time": 0.977,
+   "r_place_time": -0.906
   },
   "Stargate SG-1": {
    "n": 211,
-   "r_truth_time": 0.987,
-   "r_place_time": -0.641
+   "r_truth_time": 0.946,
+   "r_place_time": -0.111
   },
   "The Traitors US": {
    "n": 54,
-   "r_truth_time": 0.671,
-   "r_place_time": -0.159
+   "r_truth_time": 0.687,
+   "r_place_time": 0.128
   },
   "Prison Break": {
    "n": 88,
-   "r_truth_time": 0.795,
-   "r_place_time": -0.176
+   "r_truth_time": 0.811,
+   "r_place_time": 0.02
   }
  },
- "pca_var_explained_first2_allK": 0.9194,
- "pc1_corr_time": 0.975,
- "pc2_corr_arc": 0.944,
+ "pca_var_explained_first2_allK": 0.9182,
+ "pc1_corr_time": 0.96,
+ "pc2_corr_arc": 0.926,
  "fig7_raw": {
-  "var_explained_first2": 0.9199,
+  "var_explained_first2": 0.9208,
   "rw_var_explained_first2": 0.7763,
   "remaining_ratio_real": [
-   0.738,
-   0.695,
-   0.683,
-   0.659,
-   0.423,
-   0.396
+   0.746,
+   0.688,
+   0.672,
+   0.667,
+   0.432,
+   0.372
   ],
   "remaining_ratio_rw_mean": [
    0.616,
@@ -198,12 +198,12 @@
    0.266
   ],
   "z_scores": [
-   3.4,
-   7.6,
-   11.4,
-   13.8,
-   6.5,
-   6.1
+   3.6,
+   7.5,
+   11.0,
+   14.2,
+   6.9,
+   5.0
   ],
   "pc_beats_all_1000_rw": [
    true,
@@ -215,15 +215,15 @@
   ]
  },
  "fig7_standardized": {
-  "var_explained_first2": 0.8308,
+  "var_explained_first2": 0.8412,
   "rw_var_explained_first2": 0.6431,
   "remaining_ratio_real": [
-   0.534,
-   0.637,
-   0.547,
-   0.631,
-   0.34,
-   0.364
+   0.576,
+   0.626,
+   0.506,
+   0.672,
+   0.339,
+   0.331
   ],
   "remaining_ratio_rw_mean": [
    0.453,
@@ -234,20 +234,20 @@
    0.266
   ],
   "z_scores": [
-   2.7,
-   9.7,
-   8.7,
-   14.0,
-   3.3,
-   4.5
+   4.1,
+   9.3,
+   7.3,
+   15.6,
+   3.2,
+   3.0
   ],
   "pc_beats_all_1000_rw": [
+   true,
+   true,
+   true,
+   true,
    false,
-   true,
-   true,
-   true,
-   false,
-   true
+   false
   ]
  }
 }
