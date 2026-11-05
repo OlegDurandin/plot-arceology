@@ -22,7 +22,7 @@ import pandas as pd
 from stopwords import STOP
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "datasets", "Serials")
+from paths import SERIALS as DATA
 
 MIN_DUR, MAX_DUR = 15.0, 95.0   # minutes: TV episodes only
 MIN_TOKENS = 400                # raw word tokens per episode

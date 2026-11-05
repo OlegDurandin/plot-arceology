@@ -93,7 +93,10 @@ def main(prefix="PROJ", tv_dir="RU"):
     out = os.path.join(ROOT, "results", f"prose_{prefix.lower()}")
     os.makedirs(out, exist_ok=True)
     srcs = {"TV (subtitles RU)": tv_dir if prefix == "PROJ" else f"{prefix}_TV",
-            "Fairy tales": f"{prefix}_TALES", "proza.ru": f"{prefix}_PROZA"}
+            "Fairy tales": f"{prefix}_TALES", "proza.ru": f"{prefix}_PROZA",
+            "ficbook.net": f"{prefix}_FICBOOK"}
+    srcs = {k: v for k, v in srcs.items()
+            if os.path.exists(os.path.join(ROOT, "work", v, "doc_topics.npz"))}
     summ_tv = json.load(open(os.path.join(ROOT, "results", srcs["TV (subtitles RU)"], "summary.json")))
     topics = pd.read_csv(os.path.join(ROOT, "work", srcs["TV (subtitles RU)"], "topics.csv"))
     lab = topics.label.tolist()
@@ -169,7 +172,7 @@ def main(prefix="PROJ", tv_dir="RU"):
     sc_tv, Vt, _ = pca(arcs["TV (subtitles RU)"])
     mean = arcs["TV (subtitles RU)"].mean(0)
     fig, axes = plt.subplots(1, 3, figsize=(18, 5.8))
-    cols = {"TV (subtitles RU)": "C0", "Fairy tales": "C2", "proza.ru": "C3"}
+    cols = {"TV (subtitles RU)": "C0", "Fairy tales": "C2", "proza.ru": "C3", "ficbook.net": "C4"}
     for name, sh in arcs.items():
         sc = (sh - sh.mean(0)) @ Vt[:2].T          # centred per source: compare shapes
         axes[0].plot(sc[:, 1], sc[:, 0], color=cols[name], label=name)
@@ -184,7 +187,7 @@ def main(prefix="PROJ", tv_dir="RU"):
     axes[1].set_xlabel("truth & reconciliation topics, % (centred)")
     axes[1].set_ylabel("location topics, % (centred)")
     axes[1].set_title("6-topic path (Fig. 4 analogue)")
-    for name in ["Fairy tales", "proza.ru"]:
+    for name in [n for n in ["Fairy tales", "proza.ru", "ficbook.net"] if n in srcs]:
         dt_, ep_ = data[name]
         da = dialogue_arc(srcs[name].split("_", 1)[1], set(ep_.eid))
         axes[2].plot(X12, da * 100, color=cols[name], label=name, marker="o")

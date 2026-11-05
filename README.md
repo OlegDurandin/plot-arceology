@@ -49,14 +49,15 @@ REPORT.md          отчёт
 
 ```
 datasets/
-  Serials/<Сериал>/Season<N>/<Сериал>_s<N>_e<M>_{EN,RU}.srt
-  ororo.sqlite                 метаданные шоу и эпизодов (жанры, IMDB, даты)
+  data_ororo/                  финальная выгрузка Ororo (05.11.2026)
+    Serials/<Сериал>/Season<N>/<Сериал>_s<N>_e<M>_{EN,RU}.srt
+    ororo.sqlite               метаданные шоу и эпизодов (жанры, IMDB, даты)
   fairytalez[Rus].sqlite       сказки
   proza[2022-2023].sqlite      рассказы proza.ru
   proza[2024-2025].sqlite
 ```
 
-Список имён NLTK для английского стоп-листа скачивается автоматически при первом запуске `src/prep.py EN`.
+Старая раскладка (`datasets/Serials`, `datasets/ororo.sqlite`) тоже поддерживается; путь можно задать явно через `ORORO_DIR` (см. [src/paths.py](src/paths.py)). Список имён NLTK для английского стоп-листа скачивается автоматически при первом запуске `src/prep.py EN`.
 
 ## Запуск
 

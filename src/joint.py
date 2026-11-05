@@ -8,8 +8,8 @@ Vocabulary is rebuilt on the union:
     so "Россия", "Москва" survive while character names do not;
   * "too common" (> 50 % of chunks) only if so in at least 2 of 3 sources ("думать" survives);
   * rare: kept if chunk-df >= min(50, max(10, 0.2 % of chunks)) in any source.
-Training: 100k TV chunks + 100k proza chunks + all tale chunks x3 (>= 30 tokens).
-Inference: TV 20k random episodes, all tales, the 20k-story proza sample (as in project.py).
+Training: 100k TV chunks + 100k proza chunks + all tale chunks x3 + all ficbook chunks x2 (>= 30 tokens).
+Inference: TV 20k random episodes, all tales, all ficbook works, the 20k-story proza sample.
 Usage:  python src/joint.py
 Output: work/JOINT_{TV,TALES,PROZA}/{topics.csv, episodes.csv, doc_topics.npz}
 """
@@ -33,6 +33,7 @@ K, SEED, ITERS = 127, 42, 500
 WORKERS = os.cpu_count()
 N_TRAIN = {"TV": 100_000, "PROZA": 100_000}
 TALE_WEIGHT = 3
+FIC_WEIGHT = 2                    # ficbook.net fanfics (~33k chunks)
 N_TV_EPISODES = 20_000
 
 
@@ -53,7 +54,9 @@ def build_vocab():
     tv = dict(cap=tv[0], chunk_df=tv[1], unit_df=tv[2], tok=tv[3], n_chunks=tv[4],
               n_units=tv[5], prop_thr=0.30)
     stats = {"TV": tv}
-    for src, thr in [("TALES", 0.03), ("PROZA", 0.01)]:
+    for src, thr in [("TALES", 0.03), ("PROZA", 0.01), ("FICBOOK", 0.03)]:
+        if not os.path.exists(W(src, "vocab_stats.pkl")):
+            continue
         s = pickle.load(open(W(src, "vocab_stats.pkl"), "rb"))
         stats[src] = dict(cap=s["cap"], chunk_df=s["chunk_df"], unit_df=s["text_df"],
                           tok=s["tok_total"], n_chunks=s["n_chunks"], n_units=s["n_texts"],
@@ -105,13 +108,16 @@ def main():
         for t in sample:
             mdl.add_doc(t)
         n_added[src] = len(sample)
-    n_added["TALES"] = 0
-    for d in iter_raw("TALES"):
-        t = filt(d["t"], vocab)
-        if len(t) >= 30:
-            for _ in range(TALE_WEIGHT):
-                mdl.add_doc(t)
-            n_added["TALES"] += TALE_WEIGHT
+    for src, weight in [("TALES", TALE_WEIGHT), ("FICBOOK", FIC_WEIGHT)]:
+        if not os.path.isdir(W(src, "raw")):
+            continue
+        n_added[src] = 0
+        for d in iter_raw(src):
+            t = filt(d["t"], vocab)
+            if len(t) >= 30:
+                for _ in range(weight):
+                    mdl.add_doc(t)
+                n_added[src] += weight
     print("training docs:", n_added, flush=True)
     t0 = time.time()
     for i in range(0, ITERS, 20):
@@ -128,7 +134,9 @@ def main():
     topics.to_csv(W("JOINT", "topics.csv"), index=False)
 
     model_vocab = set(mdl.used_vocabs)
-    for src in ["TALES", "PROZA", "TV"]:
+    for src in ["TALES", "FICBOOK", "PROZA", "TV"]:
+        if src != "TV" and not os.path.isdir(W(src, "raw")):
+            continue
         out = W(f"JOINT_{src}")
         os.makedirs(out, exist_ok=True)
         if src == "TV":

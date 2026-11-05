@@ -27,7 +27,7 @@ import pandas as pd
 from prep import tokenize_lines
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA = os.path.join(ROOT, "datasets")
+from paths import DATASETS as DATA
 MIN_W, MAX_W = 150, 300           # chunk size in words
 PER_AUTHOR = 20                   # proza.ru: max stories per author
 WORD_RE = re.compile(r"\w+(?:[-']\w+)*")
@@ -43,7 +43,74 @@ def connect(name):
     return sqlite3.connect("file:" + urllib.parse.quote(p) + "?immutable=1", uri=True)
 
 
+FIC_DIR = os.path.join(DATA, "data_ficbook")
+FIC_DB = "ficbook_originals_2026.sqlite"
+FIC_DROP = re.compile(r"https?://|www\.|^(Примечани[ея]|Примечание автора|Публичная бета|Посвящение|"
+                      r"Описание|Начать читать|Содержание|Отзывы: ?\d*|\|)\s*:?\s*$|"
+                      r"^\d{1,2} [а-я]+ \d{4} г\.(, \d{1,2}:\d{2})?$", re.I)
+
+
+def ficbook_db():
+    """Copy the live DB (+ its WAL, which immutable mode would ignore) to work/ and open the copy."""
+    import shutil
+    dst = os.path.join(ROOT, "work", "FICBOOK_db")
+    os.makedirs(dst, exist_ok=True)
+    for suffix in ("", "-wal"):
+        src_f = os.path.join(FIC_DIR, FIC_DB + suffix)
+        if os.path.exists(src_f) and os.path.getsize(src_f) > 0:
+            shutil.copy(src_f, os.path.join(dst, FIC_DB + suffix))
+    return sqlite3.connect(os.path.join(dst, FIC_DB))
+
+
+def ficbook_text(paths, titles):
+    """Concatenate chapter files; drop table-of-contents pages, author notes, links, dates."""
+    out = []
+    for p in paths:
+        lines = open(os.path.join(DATA, p), encoding="utf-8").read().split("\n")
+        head = [l.strip() for l in lines[:6]]
+        if "Содержание" in head or "Начать читать" in head:
+            continue                                        # table-of-contents page
+        keep = [l for l in lines if l.strip() and not FIC_DROP.search(l.strip())
+                and l.strip() not in titles]
+        out.extend(keep)
+    return "\n".join(out)
+
+
 def load(src):
+    if src == "FICBOOK":
+        con = ficbook_db()
+        w = pd.read_sql("select work_id, title, author_url, directions_json, tags_json, fandoms_json, "
+                        "rating, status, published_year, published_month from works", con)
+        ct = pd.read_sql("select work_id, chapter_number, title, path, status from chapter_texts", con)
+        bad = set(ct[ct.status.isin(["error", "empty"])].work_id)
+        gaps = ct.groupby("work_id").chapter_number.agg(lambda x: x.max() - len(x) > 0)
+        ok = ct[ct.status == "complete"].sort_values(["work_id", "chapter_number"])
+        chaps = ok.groupby("work_id").agg(paths=("path", list), ctitles=("title", list))
+        w = w.merge(chaps, left_on="work_id", right_index=True)
+        n0 = len(w)
+        w = w[(w.status == "finished") & ~w.work_id.isin(bad) & ~w.work_id.map(gaps).fillna(True)]
+        n1 = len(w)
+        tags = w.tags_json.map(lambda j: set(json.loads(j)))
+        dirs = w.directions_json.map(lambda j: set(json.loads(j)))
+        w = w[~tags.map(lambda t: "Стихи" in t) & ~dirs.map(lambda d: "Статья" in d)]
+        n2 = len(w)
+        w["text"] = [ficbook_text(ps, set(ts) | {t}) for ps, ts, t in zip(w.paths, w.ctitles, w.title)]
+        w["n_words"] = w.text.map(lambda x: len(WORD_RE.findall(x)))
+        med_line = w.text.map(lambda x: np.median([len(l.split()) for l in x.split("\n") if l.strip()] or [0]))
+        w = w[(w.n_words >= 1000) & (w.n_words <= 10000) & (med_line >= 8)]
+        n3 = len(w)
+        w["bucket"] = w.work_id.map(lambda x: int(hashlib.md5(x.encode()).hexdigest(), 16) % 10000)
+        w = w.sort_values("bucket").groupby("author_url").head(PER_AUTHOR)
+        print(f"FICBOOK: {n0} works with text -> {n1} finished & complete -> {n2} without verse/articles "
+              f"-> {n3} with 1000-10000 words -> {len(w)} after cap {PER_AUTHOR}/author", flush=True)
+        w["eid"] = w.work_id
+        w["series"] = w.author_url
+        w["direction"] = w.directions_json.map(lambda j: "|".join(json.loads(j)))
+        w["tags"] = w.tags_json.map(lambda j: "|".join(json.loads(j)))
+        w["original"] = w.fandoms_json.map(lambda j: json.loads(j) == ["Ориджиналы"])
+        w["para_sep"] = "\n"
+        return w[["eid", "series", "title", "direction", "tags", "original", "rating",
+                  "published_year", "published_month", "n_words", "bucket", "text", "para_sep"]]
     if src == "TALES":
         con = connect("fairytalez[Rus].sqlite")
         df = pd.read_sql("select tale_id, title, category, author, readability, n_words, text, "
