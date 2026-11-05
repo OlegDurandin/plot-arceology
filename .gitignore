@@ -1,0 +1,12 @@
+# data and intermediate artefacts (large / not redistributable)
+datasets/
+work/
+resources/dl/
+paper/*.pdf
+# environment
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# logs
+*.log

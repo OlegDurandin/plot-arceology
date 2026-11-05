@@ -1,0 +1,11 @@
+{
+ "parallel_chunks": 934634,
+ "aligned_pairs_corr_gt_0_5": 42,
+ "median_alignment_corr": 0.338,
+ "r_lin_agreement_all": 0.723,
+ "r_lin_agreement_good": 0.907,
+ "r_arc_agreement_good": 0.926,
+ "median_profile_corr_good": 0.965,
+ "pc1_en_vs_ru": 0.999,
+ "pc2_en_vs_ru": 0.996
+}
