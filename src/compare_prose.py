@@ -103,7 +103,9 @@ def main(prefix="PROJ", tv_dir="RU"):
     truth = [lab.index(l) for l in summ_tv["fig4_truth_topics"]]
     place = [lab.index(l) for l in summ_tv["fig4_place_topics"]]
     rng = np.random.default_rng(0)
-    sims = rw_sims(rng)
+    # Keep the sampling RNG sequence used by earlier runs. Smaller topic models
+    # need a null with the same number of coordinates as their PCA input.
+    sims_by_dim = {100: rw_sims(rng)}
 
     data, rows, arcs, null_rows = {}, [], {}, []
     for name, d in srcs.items():
@@ -113,6 +115,9 @@ def main(prefix="PROJ", tv_dir="RU"):
         full = C.sum(0) / L.sum(0)[:, None]
         arcs[name] = full
         top = np.argsort(-full.mean(0))[:100]
+        if len(top) not in sims_by_dim:
+            sims_by_dim[len(top)] = rw_sims(np.random.default_rng(0), k=len(top))
+        sims = sims_by_dim[len(top)]
         m_full, _ = metrics(C, L, truth, place, top, sims)
         rows.append(dict(source=name, sample="all", texts=len(E), **m_full))
         reps = []
@@ -160,6 +165,7 @@ def main(prefix="PROJ", tv_dir="RU"):
     E, C, L = segment(dt, 12)
     nw = ep.set_index("eid").loc[E, "n_words_clean"].values
     strata = []
+    sims = sims_by_dim[min(100, arcs["proza.ru"].shape[1])]
     for lo, hi in [(0, 1500), (1500, 3000), (3000, 99999)]:
         m = (nw >= lo) & (nw < hi)
         idx = rng.choice(np.flatnonzero(m), min(N, m.sum()), replace=False)

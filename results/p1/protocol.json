@@ -1,0 +1,55 @@
+{
+  "primary_targets": [
+    "happy",
+    "open"
+  ],
+  "secondary_targets": [
+    "death",
+    "tragedy"
+  ],
+  "outer_seeds": [
+    0,
+    17,
+    42
+  ],
+  "outer_folds": 5,
+  "inner_folds": 3,
+  "cs": [
+    0.01,
+    0.1,
+    1.0,
+    10.0
+  ],
+  "pca_dimensions": 16,
+  "shuffle_seeds": [
+    101,
+    202,
+    303
+  ],
+  "primary_seed": 0,
+  "primary_shuffle": 101,
+  "primary_metric": "average_precision",
+  "primary_comparisons": [
+    "B3-B2",
+    "B3-B4_s101"
+  ],
+  "practical_ap_gain": 0.02,
+  "primary_family_size": 4,
+  "inference": "author bootstrap of fixed OOF predictions; 98.75% Bonferroni intervals",
+  "bootstrap_reps": 5000,
+  "representation": "frozen multilingual-e5-small; train-only PCA/scalers/IDF",
+  "models": [
+    "B0",
+    "B1",
+    "B2",
+    "B3",
+    "B4_s101",
+    "B4_s202",
+    "B4_s303",
+    "B1_TFIDF",
+    "B2_TFIDF"
+  ],
+  "labels_are": "author tags, absent tag is not verified negative ending",
+  "manual_audit": "blind packet prepared; independent human review pending",
+  "prior_exploration": "same corpus and tags previously analysed in H5; not unseen external validation"
+}

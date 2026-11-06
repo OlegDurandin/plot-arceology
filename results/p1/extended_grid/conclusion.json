@@ -1,0 +1,78 @@
+{
+  "analysis_phase": "post-hoc sensitivity; primary run often selected grid boundary C",
+  "primary_results": {
+    "happy": {
+      "supported": false,
+      "contrasts": [
+        {
+          "seed": 0,
+          "target": "happy",
+          "comparison": "B3-B2",
+          "delta_ap": 0.022424682060187273,
+          "ci95_low": 0.0009530691189577287,
+          "ci95_high": 0.047479700667923855,
+          "ci9875_low": -0.006039776807828804,
+          "ci9875_high": 0.058988601065184734,
+          "primary": false,
+          "practical": true,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        },
+        {
+          "seed": 0,
+          "target": "happy",
+          "comparison": "B3-B4_s101",
+          "delta_ap": 0.0015091285112386749,
+          "ci95_low": -0.03151844688054514,
+          "ci95_high": 0.029308288522865787,
+          "ci9875_low": -0.0403731501788528,
+          "ci9875_high": 0.03772437117678024,
+          "primary": false,
+          "practical": false,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        }
+      ]
+    },
+    "open": {
+      "supported": false,
+      "contrasts": [
+        {
+          "seed": 0,
+          "target": "open",
+          "comparison": "B3-B2",
+          "delta_ap": -0.02427759863645937,
+          "ci95_low": -0.049339790718809534,
+          "ci95_high": -0.00565043766423735,
+          "ci9875_low": -0.05701618951299013,
+          "ci9875_high": -0.002153523527881989,
+          "primary": false,
+          "practical": false,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        },
+        {
+          "seed": 0,
+          "target": "open",
+          "comparison": "B3-B4_s101",
+          "delta_ap": -0.00022008611370244457,
+          "ci95_low": -0.012935472530596154,
+          "ci95_high": 0.014564486826841994,
+          "ci9875_low": -0.01630289332660302,
+          "ci9875_high": 0.018772535999824123,
+          "primary": false,
+          "practical": false,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "fixed OOF author-bootstrap does not refit models",
+    "three author split seeds are sensitivity, not independent samples",
+    "author tags are not independently verified story endings",
+    "same corpus already explored in H5",
+    "frozen e5 windows may be truncated; no new encoding in this experiment"
+  ]
+}

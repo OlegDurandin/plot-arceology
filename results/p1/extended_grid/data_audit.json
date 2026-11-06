@@ -1,0 +1,31 @@
+{
+  "overlaps": {
+    "happy": {
+      "happy": 144,
+      "open": 9,
+      "death": 3,
+      "tragedy": 1
+    },
+    "open": {
+      "happy": 9,
+      "open": 146,
+      "death": 10,
+      "tragedy": 4
+    },
+    "death": {
+      "happy": 3,
+      "open": 10,
+      "death": 166,
+      "tragedy": 16
+    },
+    "tragedy": {
+      "happy": 1,
+      "open": 4,
+      "death": 16,
+      "tragedy": 33
+    }
+  },
+  "duplicate_text_sets": 0,
+  "manual_audit": "pending; blind packet in work/P1",
+  "excluded": 0
+}

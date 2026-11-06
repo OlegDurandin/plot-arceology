@@ -1,0 +1,17 @@
+{
+  "python": "3.12.16",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "transformers": "5.22.1"
+  },
+  "sha256": {
+    "src/validate_endings.py": "ca1db7d793e183022f5251ef15b44b969df678e94362d8d185c5b0b3aa4ace43",
+    "src/p1_report.py": "45dce26b21bc9aa983c5ad879ac65a4472add31320f7dbe00281bdeb6594e619",
+    "src/p1_audit.py": "8117649708cf2e74885c05f2fc83f580f3e683a39465568642ee6024b312b54d",
+    "work/EMB/FICBOOK.npz": "6965f483cd303c43fbef86d21856a8c53b863d9160baa248762c4842cc6b5c2c",
+    "work/FICBOOK/episodes.csv": "3b71d4046c356d98b065c81b2262ef1d6c1667396e46b928de0b03e6bf299247"
+  }
+}

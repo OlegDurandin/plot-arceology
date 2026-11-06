@@ -1,0 +1,9 @@
+{
+  "permutations": 999,
+  "unit": "show / author; tales author",
+  "statistic": "squared covariance norm between cluster frequencies and label prevalence",
+  "min_text_positives": 20,
+  "min_units": 5,
+  "adjustment": "BH across all source/label pairs separately per representation",
+  "caveat": "marginal associations; not adjusted for topic, length or other labels"
+}

@@ -1,0 +1,43 @@
+{
+  "model": "intfloat/multilingual-e5-small",
+  "source": "FICBOOK",
+  "chunks": 33420,
+  "windows": 45181,
+  "window_words": 220,
+  "windows_over_512": 16,
+  "fraction_windows_over_512": 0.00035413116132887717,
+  "chunks_with_any_truncation": 13,
+  "fraction_chunks_with_any_truncation": 0.00038898862956313583,
+  "affected_eids": [
+    "019c480d-b980-7f59-8a75-9304c548eec7",
+    "019c48b7-2fb0-75d1-ae6e-9098652ab349",
+    "019c61d5-c109-77f6-a84e-33b2d9e5201b",
+    "019c7274-8c5d-7a70-8b8b-49321e2562c4",
+    "019cce00-a8bf-7dc0-adcc-1600eddffcb8",
+    "019d35cb-198d-77d3-be0e-70f9a1009d2a",
+    "019d99b4-395d-70b9-b318-6db2ba708ffb",
+    "019dc657-841a-7814-b389-440312f8e121",
+    "019ddd2a-63fd-70bb-8910-aacce29185c6",
+    "12117843"
+  ],
+  "affected_texts": 10,
+  "possible_explicit_label_markers": [
+    "\u0441\u0447\u0430\u0441\u0442\u043b\u0438\u0432\u044b\u0439 \u0444\u0438\u043d\u0430\u043b",
+    "\u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0439 \u0444\u0438\u043d\u0430\u043b",
+    "\u0441\u043c\u0435\u0440\u0442\u044c \u043e\u0441\u043d\u043e\u0432\u043d\u044b\u0445 \u043f\u0435\u0440\u0441\u043e\u043d\u0430\u0436\u0435\u0439",
+    "pwp"
+  ],
+  "marker_eids": [
+    "019c1e4c-4bf4-7711-9e3c-71310d52ed99",
+    "019c53a3-a475-7638-926a-d9200d554c55",
+    "019c7a8a-ae51-79d2-8184-f1147ed62646",
+    "019c9917-b0e6-7b7b-9274-722552faf18d",
+    "019cd2a2-27f3-743e-9bb3-72f69c34ca7c",
+    "019d741a-7859-72a6-90c1-c27aec4ab677",
+    "019dca6d-0642-7046-8733-727bc9c91b37",
+    "019ddaab-8875-77e8-b0a0-66c21e7e8165"
+  ],
+  "marker_texts": 8,
+  "token_length_median": 284.0,
+  "token_length_max": 708
+}

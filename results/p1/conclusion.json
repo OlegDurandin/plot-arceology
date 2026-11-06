@@ -1,0 +1,78 @@
+{
+  "analysis_phase": "initial fixed protocol",
+  "primary_results": {
+    "happy": {
+      "supported": false,
+      "contrasts": [
+        {
+          "seed": 0,
+          "target": "happy",
+          "comparison": "B3-B2",
+          "delta_ap": 0.0027326891023098793,
+          "ci95_low": -0.021800270170874075,
+          "ci95_high": 0.029025812618267678,
+          "ci9875_low": -0.027600855199797346,
+          "ci9875_high": 0.037796831663990484,
+          "primary": true,
+          "practical": false,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        },
+        {
+          "seed": 0,
+          "target": "happy",
+          "comparison": "B3-B4_s101",
+          "delta_ap": -0.006659157458257042,
+          "ci95_low": -0.044330077333079795,
+          "ci95_high": 0.0271669615893212,
+          "ci9875_low": -0.05439987372076449,
+          "ci9875_high": 0.03744996571372542,
+          "primary": true,
+          "practical": false,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        }
+      ]
+    },
+    "open": {
+      "supported": false,
+      "contrasts": [
+        {
+          "seed": 0,
+          "target": "open",
+          "comparison": "B3-B2",
+          "delta_ap": -0.022278066496166524,
+          "ci95_low": -0.046358381932184334,
+          "ci95_high": -0.004101195935957256,
+          "ci9875_low": -0.055113496430670296,
+          "ci9875_high": 0.000629006402151397,
+          "primary": true,
+          "practical": false,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        },
+        {
+          "seed": 0,
+          "target": "open",
+          "comparison": "B3-B4_s101",
+          "delta_ap": 0.007589202421460425,
+          "ci95_low": -0.008505871190291293,
+          "ci95_high": 0.02772784948598513,
+          "ci9875_low": -0.012955090763890849,
+          "ci9875_high": 0.03262298267533896,
+          "primary": true,
+          "practical": false,
+          "adjusted_interval_positive": false,
+          "primary_design_comparison": true
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "fixed OOF author-bootstrap does not refit models",
+    "three author split seeds are sensitivity, not independent samples",
+    "author tags are not independently verified story endings",
+    "same corpus already explored in H5",
+    "frozen e5 windows may be truncated; no new encoding in this experiment"
+  ]
+}
