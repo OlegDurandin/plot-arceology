@@ -1,0 +1,37 @@
+{
+  "primary_contrast": "TALES minus PROZA",
+  "primary_statistic": "pc2_remaining_std",
+  "primary_weight": "equal_text",
+  "primary_representations": [
+    "LDA127",
+    "E5_384"
+  ],
+  "primary_n": 1000,
+  "chunk_control_n": 600,
+  "length_range": [
+    1000,
+    10000
+  ],
+  "bins": [
+    999,
+    1200,
+    1500,
+    1800,
+    2200,
+    2700,
+    3600,
+    5000,
+    7200,
+    10000
+  ],
+  "bootstrap": 2000,
+  "primary_interval": 0.975,
+  "secondary_interval": 0.95,
+  "matching_seed": 0,
+  "matching_repeats": 20,
+  "null_repeats": 100,
+  "bootstrap_method": "whole author resampling then restore fixed length-stratum totals",
+  "inference_scope": "conditional on covariate-only fixed matched cohort and trained representations",
+  "primary_support": "both representation lower 97.5% bounds >0; no point reversal in 6/12-chunk or equal-author controls",
+  "note": "not a direct measure of narrative formulaicity; no topic/embedding refitting"
+}

@@ -1,0 +1,21 @@
+{
+  "python": "3.12.16",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1"
+  },
+  "sha256": {
+    "src/compare_registers.py": "674468125263dddb90a7a45bb5b970a65755bd4bb08c450550d942eb526daae2",
+    "src/p2_coordinates.py": "c80401b0bec0c82a335850487414aeb882af3d528657067ceea5e244aad4347a",
+    "work/JOINT_TALES/doc_topics.npz": "5494ab0750a63203f88b63fa7b2f3e146b0299608f39fd7217694b99590f127a",
+    "work/JOINT_PROZA/doc_topics.npz": "b1288b57f0bb997c99e95d433ca2bcdb84bc9057aeb047121f55f719b05b3224",
+    "work/EMB/TALES.npz": "bf344e2c2c0724bfc25b6022b09443761146fc1e3ccb11e5b4887f1474da04a3",
+    "work/EMB/PROZA.npz": "8131d92582d19600c1bec34397605461721d95ed602f2f4b8ee04c2d88a2a27a",
+    "work/JOINT_TALES/episodes.csv": "1889d2dc2e914df0914450dd5201890739251b9fdccccbbf4665a36969074f1c",
+    "work/JOINT_PROZA/episodes.csv": "fe310bffb6c34a6c296f54aeff64021f6ad14b39f5a7a0155d9d91bf3f9cee09",
+    "src/p2_audit.py": "45501f320a25cc5f3a5504d563a5d6cd7eabc54c0aa2dea5ea0ad9020676187c",
+    "tests/test_p2.py": "6803e7c772bafd33b2716dde3d2b1e34a0d93dfcbf89962197f8c94064fcbfc6"
+  }
+}

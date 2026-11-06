@@ -1,0 +1,45 @@
+{
+  "primary_supported": false,
+  "no_control_reversal": false,
+  "strong_D2_support": false,
+  "primary": [
+    {
+      "case": "matched",
+      "representation": "LDA",
+      "weighting": "text",
+      "metric": "pc2_remaining_std",
+      "n_per_source": 1000,
+      "tales": 0.3049667563438514,
+      "proza": 0.3051891935955382,
+      "difference": -0.00022243725168680228,
+      "ci95_low": -0.04165544263845126,
+      "ci95_high": 0.05896931663229421,
+      "ci975_low": -0.04980175319237531,
+      "ci975_high": 0.06540375864712131,
+      "primary": true
+    },
+    {
+      "case": "matched",
+      "representation": "E5",
+      "weighting": "text",
+      "metric": "pc2_remaining_std",
+      "n_per_source": 1000,
+      "tales": 0.5405129103892338,
+      "proza": 0.4742803687768098,
+      "difference": 0.06623254161242398,
+      "ci95_low": -0.023099210112042218,
+      "ci95_high": 0.14393500101797868,
+      "ci975_low": -0.03430033591796583,
+      "ci975_high": 0.14929324047335885,
+      "primary": true
+    }
+  ],
+  "omitted_collection": "Сказочные книги Эндрю Лэнга",
+  "limitations": [
+    "intervals conditional on matching and fitted representations",
+    "author/collection labels are imperfect dependence units",
+    "fixed length bins do not match every word count exactly",
+    "no direct formulaicity or narrative-event measure",
+    "TV and ficbook not included in this primary contrast"
+  ]
+}
